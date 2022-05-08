@@ -1,0 +1,7 @@
+# IDEs things, e.g. settings files
+.project
+.classpath
+.settings/
+
+# maven build files
+target/
