@@ -1,11 +1,4 @@
-MAIN_CLASS = mastermicro.topologies.Main
-
-.PHONY: run tests
-
-run:
-	@echo "Running ${MAIN_CLASS} ..."
-	@echo "---------------------------------------"
-	@mvn -e -q exec:java -Dexec.mainClass=${MAIN_CLASS}
+.PHONY: tests
 
 test:
 	@echo "Running tests ..."
