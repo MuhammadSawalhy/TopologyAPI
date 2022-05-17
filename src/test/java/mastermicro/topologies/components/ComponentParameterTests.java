@@ -1,5 +1,6 @@
 package mastermicro.topologies.components;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,5 +61,16 @@ public class ComponentParameterTests {
         assertEquals(1, par.getDefault());
         assertEquals(1, par.getMax());
         assertEquals(1, par.getMin());
+    }
+
+    @Test
+    @DisplayName("toJSON should return correct values")
+    void testToJSON() {
+        ComponentParameter par = new ComponentParameter(2.5,2,3);
+        JSONObject obj = par.toJSON();
+        assertEquals(2.5, obj.get("default"));
+        // Double.equals is strict, compare to 2.0 not 2
+        assertEquals(2.0, obj.get("min"));
+        assertEquals(3.0, obj.get("max"));
     }
 }

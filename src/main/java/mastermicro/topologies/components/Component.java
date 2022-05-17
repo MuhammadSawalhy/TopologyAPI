@@ -1,15 +1,35 @@
 package mastermicro.topologies.components;
 
-import org.json.JSONObject;
-import java.util.HashMap;
+import mastermicro.topologies.io.JSONSerializable;
 
-public interface Component {
-    public String id = null;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
+
+public abstract class Component implements JSONSerializable {
+    public String id;
     public HashMap<String, String> netlist = new HashMap<>(2);
 
-    public void connectTerminal(String terminal, String node);
+    public Component(String id) {
+        this.id = id;
+    }
 
-    public void disconnectTerminal(String terminal);
+    public void connectTerminal(String terminal, String node) throws UnrecognizedTerminalException {
+        validateTerminal(terminal);
+        netlist.put(terminal, node);
+    };
+
+    public void disconnectTerminal(String terminal) throws UnrecognizedTerminalException {
+        validateTerminal(terminal);
+        netlist.remove(terminal);
+    };
+
+    protected void validateTerminal(String terminal) throws UnrecognizedTerminalException {
+        if (!getAvailableTerminals().contains(terminal))
+            throw new UnrecognizedTerminalException(terminal);
+    }
+
+    public abstract Set<String> getAvailableTerminals();
 
     /**
      * Determine if this component is connected to a netlist node or not.
@@ -17,12 +37,8 @@ public interface Component {
      * connected to a specific netlist node.
      * @param node name of the node
      */
-    public void isConnectedToNode(String node);
-
-    /**
-     * Serialize the component in a JSON object to which will item of array of components.
-     * Later, all the topologies will be written in a .json file.
-     * @return the json obejct that represent the component
-     */
-    public JSONObject toJSON();
+    public boolean isConnectedToNode(String node) {
+        Collection<String> nodes = netlist.values();
+        return nodes.contains(node);
+    };
 }

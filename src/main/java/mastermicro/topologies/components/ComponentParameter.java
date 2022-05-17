@@ -1,6 +1,9 @@
 package mastermicro.topologies.components;
 
-public class ComponentParameter {
+import mastermicro.topologies.io.JSONSerializable;
+import org.json.JSONObject;
+
+public class ComponentParameter implements JSONSerializable {
     private double defaultValue;
     private double min;
     private double max;
@@ -38,5 +41,14 @@ public class ComponentParameter {
             defaultValue = max;
         if (min > max)
             min = max;
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject obj = new JSONObject();
+        obj.put("default", defaultValue);
+        obj.put("min", min);
+        obj.put("max", max);
+        return obj;
     }
 }
