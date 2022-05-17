@@ -1,6 +1,8 @@
 package mastermicro.topologies.topology;
 
 import mastermicro.topologies.components.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -47,4 +49,17 @@ public class TopologyTests {
         assertEquals(2, coms.size());
     }
 
+    @Test
+    @DisplayName("toJSON should return value with id")
+    void testToJSONid() {
+        assertEquals(top.id, top.toJSON().get("id"));
+    }
+
+    @Test
+    @DisplayName("toJSON should return value with components")
+    void testToJSONComponents() {
+        JSONArray comps = (JSONArray) top.toJSON().get("components");
+        JSONObject res = (JSONObject) comps.get(1);
+        assertEquals(top.components.get(1).id, res.get("id"));
+    }
 }

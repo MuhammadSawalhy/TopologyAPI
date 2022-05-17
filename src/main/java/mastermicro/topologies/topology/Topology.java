@@ -1,11 +1,14 @@
 package mastermicro.topologies.topology;
 
 import mastermicro.topologies.components.Component;
+import mastermicro.topologies.io.JSONSerializable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Topology {
+public class Topology implements JSONSerializable {
     public String id;
     public final ArrayList<Component> components = new ArrayList<>();
 
@@ -24,5 +27,18 @@ public class Topology {
             if (c.isConnectedToNode(node))
                 connectedComponents.add(c);
         return connectedComponents;
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject obj = new JSONObject();
+        obj.put("id", id);
+
+        JSONArray comps = new JSONArray();
+        for (Component c : components)
+        comps.put(c.toJSON());
+
+        obj.put("components", comps);
+        return obj;
     }
 }
