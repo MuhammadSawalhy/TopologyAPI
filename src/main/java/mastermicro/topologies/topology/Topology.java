@@ -1,6 +1,7 @@
 package mastermicro.topologies.topology;
 
 import mastermicro.topologies.components.Component;
+import mastermicro.topologies.io.InvalidJSONException;
 import mastermicro.topologies.io.JSONSerializable;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,12 +44,12 @@ public class Topology implements JSONSerializable {
         return obj;
     }
 
-    public static Topology fromJSON(String json) {
+    public static Topology fromJSON(String json) throws InvalidJSONException {
         JSONObject obj = new JSONObject(json);
         return fromJSON(obj);
     }
 
-    public static Topology fromJSON(JSONObject obj) {
+    public static Topology fromJSON(JSONObject obj) throws InvalidJSONException {
         JSONArray components = obj.getJSONArray("components");
 
         String id = (String) obj.get("id");

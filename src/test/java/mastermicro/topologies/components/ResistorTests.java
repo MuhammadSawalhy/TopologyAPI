@@ -5,15 +5,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import mastermicro.topologies.io.FileReader;
+import mastermicro.topologies.io.InvalidJSONException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.FileNotFoundException;
+
 public class ResistorTests {
     Resistor resistor;
+    String componentFile = getClass().getClassLoader().getResource("component-resistor.json").getFile();
 
     @BeforeEach
     void setup() {
-        var r = new ComponentParameter(2,1,10);
+        ComponentParameter r = new ComponentParameter(2,1,10);
         resistor = new Resistor("resistor-id", r);
     }
 
@@ -93,5 +99,14 @@ public class ResistorTests {
         resistor.connectTerminal("t1", node);
         JSONObject netlist = (JSONObject) resistor.toJSON().get("netlist");
         assertEquals(node, netlist.get("t1"));
+    }
+
+    @Test
+    @DisplayName("fromJSON should return value with correct components")
+    void testFromJSON() throws FileNotFoundException, InvalidJSONException {
+        Resistor res = (Resistor) Component.fromJSON(FileReader.readFile(componentFile));
+        assertEquals("res1", res.id);
+        assertEquals(100, res.resistance.getDefault());
+        assertEquals("vdd", res.netlist.get("t1"));
     }
 }

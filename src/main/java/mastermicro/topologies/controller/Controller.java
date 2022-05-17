@@ -1,14 +1,15 @@
 package mastermicro.topologies.controller;
 
 import mastermicro.topologies.topology.Topology;
+import mastermicro.topologies.io.FileReader;
+import mastermicro.topologies.io.InvalidJSONException;
+
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Controller {
     private ArrayList<Topology> topologies = new ArrayList<>();
@@ -30,14 +31,8 @@ public class Controller {
                 topologies.remove(i);
     }
 
-    public void readTopologyFromFile(String jsonFilePath) throws FileNotFoundException {
-        StringBuilder json = new StringBuilder();
-        try (Scanner input = new Scanner(new File(jsonFilePath))) {
-            while (input.hasNextLine())
-                json.append(input.nextLine()).append("\n");
-        }
-
-        Topology top = Topology.fromJSON(json.toString());
+    public void readTopologyFromFile(String jsonFilePath) throws FileNotFoundException, InvalidJSONException {
+        Topology top = Topology.fromJSON(FileReader.readFile(jsonFilePath));
         topologies.add(top);
     }
 

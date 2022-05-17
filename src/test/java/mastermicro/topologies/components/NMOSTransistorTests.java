@@ -10,7 +10,7 @@ public class NMOSTransistorTests {
 
     @BeforeEach
     void setup() {
-        var m_1 = new ComponentParameter(2,1,10);
+        ComponentParameter m_1 = new ComponentParameter(2,1,10);
         nmos = new NMOSTransistor("nmos-id", m_1);
     }
 
@@ -92,7 +92,7 @@ public class NMOSTransistorTests {
     void testToJSONmlParameter() throws UnrecognizedTerminalException {
         nmos.m_l.setDefault(3);
         JSONObject m_l = (JSONObject) nmos.toJSON().get("m(l)");
-        assertEquals(3.0, m_l.get("default"));
+        assertEquals(3.0, m_l.getDouble("default"));
     }
 
     @Test
@@ -101,6 +101,6 @@ public class NMOSTransistorTests {
         String node = "VCC";
         nmos.connectTerminal("gate", node);
         JSONObject netlist = (JSONObject) nmos.toJSON().get("netlist");
-        assertEquals(node, netlist.get("gate"));
+        assertEquals(node, netlist.getString("gate"));
     }
 }
