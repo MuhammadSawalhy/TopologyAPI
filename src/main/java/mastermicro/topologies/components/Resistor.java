@@ -2,26 +2,25 @@ package mastermicro.topologies.components;
 
 import org.json.JSONObject;
 
-import java.util.Collection;
 import java.util.Set;
 
-public class NMOSTransistor extends Component {
-    public ComponentParameter m_1;
+public class Resistor extends Component {
+    public ComponentParameter resistance;
     private Set<String> availableTerminals = Set.of(
-        "gate","drain","source"
+        "t1", "t2"
     );
 
-    public NMOSTransistor(String id, ComponentParameter m_1) {
+    public Resistor(String id, ComponentParameter resistance) {
         super(id);
-        this.m_1 = m_1;
+        this.resistance = resistance;
     }
 
     @Override
     public JSONObject toJSON() {
         JSONObject obj = new JSONObject();
         obj.put("id", id);
-        obj.put("type", "nmos");
-        obj.put("m(1)", m_1.toJSON());
+        obj.put("type", "resistor");
+        obj.put("resistance", resistance.toJSON());
         obj.put("netlist", new JSONObject(netlist));
         return obj;
     }

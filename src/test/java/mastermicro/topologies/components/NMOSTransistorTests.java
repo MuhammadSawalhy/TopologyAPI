@@ -70,6 +70,13 @@ public class NMOSTransistorTests {
     }
 
     @Test
+    @DisplayName("toJSON should return with id")
+    void testToJSONid() {
+        String id = (String)nmos.toJSON().get("id");
+        assertEquals(nmos.id, id);
+    }
+
+    @Test
     @DisplayName("toJSON should return with m(1) parameter contains a 'default' property")
     void testToJSONM1Parameter() throws UnrecognizedTerminalException {
         nmos.m_1.setDefault(3);
