@@ -80,7 +80,7 @@ public class ResistorTests {
 
     @Test
     @DisplayName("toJSON should return with resistance parameter contains a 'default' property")
-    void testToJSONM1Parameter() throws UnrecognizedTerminalException {
+    void testToJSONresistanceParameter() throws UnrecognizedTerminalException {
         resistor.resistance.setDefault(3);
         JSONObject resistance = (JSONObject) resistor.toJSON().get("resistance");
         assertEquals(3.0, resistance.get("default"));

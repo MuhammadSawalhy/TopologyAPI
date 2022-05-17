@@ -6,14 +6,14 @@ import java.util.Collection;
 import java.util.Set;
 
 public class NMOSTransistor extends Component {
-    public ComponentParameter m_1;
+    public ComponentParameter m_l;
     private Set<String> availableTerminals = Set.of(
         "gate","drain","source"
     );
 
-    public NMOSTransistor(String id, ComponentParameter m_1) {
+    public NMOSTransistor(String id, ComponentParameter m_l) {
         super(id);
-        this.m_1 = m_1;
+        this.m_l = m_l;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class NMOSTransistor extends Component {
         JSONObject obj = new JSONObject();
         obj.put("id", id);
         obj.put("type", "nmos");
-        obj.put("m(1)", m_1.toJSON());
+        obj.put("m(l)", m_l.toJSON());
         obj.put("netlist", new JSONObject(netlist));
         return obj;
     }

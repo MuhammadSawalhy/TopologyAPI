@@ -1,6 +1,9 @@
 package mastermicro.topologies.components;
 
 import mastermicro.topologies.io.JSONSerializable;
+import mastermicro.topologies.topology.Topology;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,4 +44,29 @@ public abstract class Component implements JSONSerializable {
         Collection<String> nodes = netlist.values();
         return nodes.contains(node);
     };
+
+    public static Component fromJSON(String json) {
+        JSONObject obj = new JSONObject(json);
+        return fromJSON(obj);
+    }
+
+    public static Component fromJSON(JSONObject obj) {
+        String type = (String) obj.get("type");
+        String id = (String) obj.get("id");
+
+        switch (type) {
+            case "nmos":
+                JSONObject mlJSON = (JSONObject) obj.get("m(l)");
+                ComponentParameter ml = ComponentParameter.fromJSON(mlJSON);
+                NMOSTransistor nmos = new NMOSTransistor(id, ml);
+                return nmos;
+            case "resistor":
+                JSONObject resJSON = (JSONObject) obj.get("resistance");
+                ComponentParameter res = ComponentParameter.fromJSON(resJSON);
+                NMOSTransistor resistor = new NMOSTransistor(id, res);
+                return resistor;
+        }
+
+        return null;
+    }
 }

@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Topology implements JSONSerializable {
@@ -40,5 +41,25 @@ public class Topology implements JSONSerializable {
 
         obj.put("components", comps);
         return obj;
+    }
+
+    public static Topology fromJSON(String json) {
+        JSONObject obj = new JSONObject(json);
+        return fromJSON(obj);
+    }
+
+    public static Topology fromJSON(JSONObject obj) {
+        JSONArray components = obj.getJSONArray("components");
+
+        String id = (String) obj.get("id");
+        Topology top = new Topology(id);
+
+        for (int i = 0; i < components.toList().size(); i++) {
+            JSONObject compJSON = (JSONObject) components.get(i);
+            Component comp = Component.fromJSON(compJSON);
+            top.components.add(comp);
+        }
+
+        return top;
     }
 }

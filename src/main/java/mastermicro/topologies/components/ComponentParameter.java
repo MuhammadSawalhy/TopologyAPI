@@ -51,4 +51,17 @@ public class ComponentParameter implements JSONSerializable {
         obj.put("max", max);
         return obj;
     }
+
+    public static ComponentParameter fromJSON(String json) {
+        JSONObject obj = new JSONObject(json);
+        return fromJSON(obj);
+    }
+
+    public static ComponentParameter fromJSON(JSONObject obj) {
+        return new ComponentParameter(
+                obj.getDouble("default"),
+                obj.getDouble("min"),
+                obj.getDouble("max")
+        );
+    }
 }

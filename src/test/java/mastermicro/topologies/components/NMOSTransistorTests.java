@@ -23,7 +23,7 @@ public class NMOSTransistorTests {
     @Test
     @DisplayName("should have m_1 parameter")
     void testParameter() {
-        assertEquals(ComponentParameter.class, nmos.m_1.getClass());
+        assertEquals(ComponentParameter.class, nmos.m_l.getClass());
     }
 
     @Test
@@ -89,10 +89,10 @@ public class NMOSTransistorTests {
 
     @Test
     @DisplayName("toJSON should return with m(1) parameter contains a 'default' property")
-    void testToJSONM1Parameter() throws UnrecognizedTerminalException {
-        nmos.m_1.setDefault(3);
-        JSONObject m_1 = (JSONObject) nmos.toJSON().get("m(1)");
-        assertEquals(3.0, m_1.get("default"));
+    void testToJSONmlParameter() throws UnrecognizedTerminalException {
+        nmos.m_l.setDefault(3);
+        JSONObject m_l = (JSONObject) nmos.toJSON().get("m(l)");
+        assertEquals(3.0, m_l.get("default"));
     }
 
     @Test
