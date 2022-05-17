@@ -6,4 +6,5 @@
 
 # maven build files
 target/
-~$classes-uml.svg.bkp
+~$classes-uml.svg*
+.attach*
