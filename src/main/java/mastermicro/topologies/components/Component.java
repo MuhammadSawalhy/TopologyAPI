@@ -46,12 +46,12 @@ public abstract class Component implements JSONSerializable {
         return nodes.contains(node);
     }
 
-    public static Component fromJSON(String json) throws InvalidJSONException {
+    public static Component fromJSON(String json) {
         JSONObject obj = new JSONObject(json);
         return fromJSON(obj);
     }
 
-    public static Component fromJSON(JSONObject obj) throws InvalidJSONException {
+    public static Component fromJSON(JSONObject obj) {
         Component comp;
         String id = obj.getString("id");
         String type = obj.getString("type");

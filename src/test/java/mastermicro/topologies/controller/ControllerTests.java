@@ -23,7 +23,7 @@ public class ControllerTests {
 
     @Test
     @DisplayName("should read topology from a .json file")
-    void testReadTopologyFromFile() throws FileNotFoundException, InvalidJSONException {
+    void testReadTopologyFromFile() throws FileNotFoundException {
         controller.readTopologyFromFile(topologyFile);
         Topology top = controller.getTopologies().get(0);
         assertEquals("top1", top.id);
@@ -32,7 +32,7 @@ public class ControllerTests {
 
     @Test
     @DisplayName("should write a topology to a json file")
-    void testWriteTopology() throws IOException, InvalidJSONException {
+    void testWriteTopology() throws IOException {
         controller.readTopologyFromFile(topologyFile);
         controller.writeTopologyToFile("top1", topologyFile_2);
         controller.readTopologyFromFile(topologyFile_2);
@@ -41,7 +41,7 @@ public class ControllerTests {
 
     @Test
     @DisplayName("should delete topology using the id")
-    void testDeleteTopology() throws FileNotFoundException, InvalidJSONException {
+    void testDeleteTopology() throws FileNotFoundException {
         controller.readTopologyFromFile(topologyFile);
         controller.getTopologies().get(0).id = "new-id";
         controller.deleteTopology("new-id");

@@ -31,7 +31,7 @@ public class Controller {
                 topologies.remove(i);
     }
 
-    public void readTopologyFromFile(String jsonFilePath) throws FileNotFoundException, InvalidJSONException {
+    public void readTopologyFromFile(String jsonFilePath) throws FileNotFoundException {
         Topology top = Topology.fromJSON(FileReader.readFile(jsonFilePath));
         topologies.add(top);
     }

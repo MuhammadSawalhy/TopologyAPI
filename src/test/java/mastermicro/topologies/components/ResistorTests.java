@@ -103,7 +103,7 @@ public class ResistorTests {
 
     @Test
     @DisplayName("fromJSON should return value with correct components")
-    void testFromJSON() throws FileNotFoundException, InvalidJSONException {
+    void testFromJSON() throws FileNotFoundException {
         Resistor res = (Resistor) Component.fromJSON(FileReader.readFile(componentFile));
         assertEquals("res1", res.id);
         assertEquals(100, res.resistance.getDefault());

@@ -44,12 +44,12 @@ public class Topology implements JSONSerializable {
         return obj;
     }
 
-    public static Topology fromJSON(String json) throws InvalidJSONException {
+    public static Topology fromJSON(String json) {
         JSONObject obj = new JSONObject(json);
         return fromJSON(obj);
     }
 
-    public static Topology fromJSON(JSONObject obj) throws InvalidJSONException {
+    public static Topology fromJSON(JSONObject obj) {
         JSONArray components = obj.getJSONArray("components");
 
         String id = (String) obj.get("id");
