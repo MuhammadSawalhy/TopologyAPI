@@ -39,6 +39,17 @@ public class NMOSTransistorTests {
     }
 
     @Test
+    @DisplayName("isConnected to node should return true when it is connected")
+    void testIsConnectToNode() throws UnrecognizedTerminalException {
+        String node = "VCC";
+        assertFalse(nmos.isConnectedToNode(node));
+        nmos.connectTerminal("gate", node);
+        assertTrue(nmos.isConnectedToNode(node));
+        nmos.connectTerminal("drain", node);
+        assertTrue(nmos.isConnectedToNode(node));
+    }
+
+    @Test
     @DisplayName("should throw when connecting terminal that doesn't exist")
     void testConnectWrongTerminal() {
         assertThrows(UnrecognizedTerminalException.class, () -> {
