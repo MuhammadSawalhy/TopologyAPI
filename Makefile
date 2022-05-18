@@ -7,6 +7,9 @@ test:
 	@echo "---------------------------------------"
 	mvn -q test
 
+docs:
+	mvn javadoc:javadoc
+
 docker-test: docker-build
 	docker run -it ${DOCKER_IMAGE}
 
