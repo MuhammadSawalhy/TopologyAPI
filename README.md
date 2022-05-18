@@ -1,6 +1,6 @@
 # Topologies API
 
-A task in the recruiting process of Master Micro's software engineering internship program. The main objective of this task is to show my OOP programming paradigm skills and how good I understand such a crucial concept in programming.
+OOP designed Java library to manage circuits' topologies and provide a functionality to store and read them from the local file system as json file.
 
 ## Class UML diagram
 
@@ -10,7 +10,7 @@ A task in the recruiting process of Master Micro's software engineering internsh
 
 I have chosen Java as the programming language to convert the wanted requirements into a reality. But why?
 
-OK, this is a good question. Java is one of the best known languages so it is better to be maintained in the long term by other. And more people digest the codebase and understand what is going on.
+OK, this is a good question. Java is one of the best known languages so it is better to be maintained in the long term by other. And more people can digest the codebase and understand what is going on.
 
 Java was originally developed by Sun Mircosystems (acquired by Oracle now) which is the same developer of many tools that will help us cover all the described requirements.
 
@@ -27,7 +27,7 @@ Java was originally developed by Sun Mircosystems (acquired by Oracle now) which
 
 Or you can generate these docs locally with:
 
-```
+```bash
 mvn javadoc:javadoc
 # or use make
 make docs
@@ -69,14 +69,14 @@ You should be able to see such an delightful test status which indicates that al
 
 OK, you can use Docker for more consistency and to make sure all the work is done in a separate environment that won't neither be affected by your machine nor affect it.
 
-```
+```bash
 docker --build . --name topologies # build the image
 docker run topologies
 ```
 
 Or to make it easier:
 
-```
+```bash
 make docker-test
 ```
 
