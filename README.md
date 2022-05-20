@@ -21,16 +21,16 @@ Java was originally developed by Sun Mircosystems (acquired by Oracle now) which
 | JavaDoc    | A tool provided by Oracle to generate documentations                                           |
 | JUnit5     | Testing framework for Java                                                                     |
 
-## Documentation
+## Documentation & Analysis
 
-*Simply open this link:* https://muhammadsawalhy.github.io/topology-api
+*Simply open these links directly:*
+- [Documentation](https://muhammadsawalhy.github.io/topology-api/apidocs/index.html)
+- [CheckStyle Analysis](https://muhammadsawalhy.github.io/topology-api/checkstyle.html)
 
-Or you can generate these docs locally under `target/site/apidocs` directory:
+Or you can generate the site locally under `target/site/` directory, so you can open `target/site/index.html` in your browser of choice:
 
 ```bash
-mvn javadoc:javadoc
-# or use make
-make docs
+mvn site
 ```
 
 ## How to test
