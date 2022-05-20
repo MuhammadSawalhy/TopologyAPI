@@ -25,7 +25,7 @@ Java was originally developed by Sun Mircosystems (acquired by Oracle now) which
 
 *Simply open this link:* https://muhammadsawalhy.github.io/topology-api
 
-Or you can generate these docs locally with:
+Or you can generate these docs locally under `target/site/apidocs` directory:
 
 ```bash
 mvn javadoc:javadoc

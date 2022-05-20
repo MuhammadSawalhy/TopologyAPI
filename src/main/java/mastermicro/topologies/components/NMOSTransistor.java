@@ -1,8 +1,6 @@
 package mastermicro.topologies.components;
 
 import org.json.JSONObject;
-
-import java.util.Collection;
 import java.util.Set;
 
 public class NMOSTransistor extends Component {

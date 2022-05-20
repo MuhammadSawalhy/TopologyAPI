@@ -1,7 +1,6 @@
 package mastermicro.topologies.components;
 
 import org.json.JSONObject;
-
 import java.util.Set;
 
 public class Resistor extends Component {

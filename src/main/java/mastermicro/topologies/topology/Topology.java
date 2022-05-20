@@ -1,13 +1,11 @@
 package mastermicro.topologies.topology;
 
 import mastermicro.topologies.components.Component;
-import mastermicro.topologies.io.InvalidJSONException;
 import mastermicro.topologies.io.JSONSerializable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Topology implements JSONSerializable {

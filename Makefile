@@ -5,7 +5,7 @@ DOCKER_IMAGE := topologies
 test:
 	@echo "Running tests ..."
 	@echo "---------------------------------------"
-	mvn -q test
+	mvn test
 
 docs:
 	mvn javadoc:javadoc
