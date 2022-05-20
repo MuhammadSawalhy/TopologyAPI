@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"mastermicro.topologies.components"},{"l":"mastermicro.topologies.controller"},{"l":"mastermicro.topologies.io"},{"l":"mastermicro.topologies.topology"}];updateSearchResults();
